@@ -1,0 +1,170 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CalculatorAvaloniaApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="CalculatorAvaloniaApp.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Width="350" Height="350"
+        Background="White"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="CalculatorAvaloniaApp">
+    
+    <Window.Styles>
+        <Style Selector="Button.NumberStyle">
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
+        <Style Selector="Button.EqualOperation">
+            <Setter Property="Background" Value="Firebrick"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+        <Style Selector="Button.Operation">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="Width" Value="26"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0"></Setter>
+            <Setter Property="CornerRadius" Value="6"/>
+        </Style>
+        
+        <Style Selector="TextBlock.InputBox">
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Height" Value="22"/>
+        </Style>
+        
+        <Style Selector="Border.InputBorder">
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="3"></Setter>
+            <Setter Property="Margin" Value="0,0,0,5"/> 
+        </Style>
+        
+        <Style Selector="Border.OuterWrapper">
+            <Setter Property="BorderBrush" Value="Snow"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="9"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+    </Window.Styles>
+    
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border Classes="OuterWrapper">
+        <StackPanel>
+        <!-- InputBox -->
+        <Grid>
+            <Border Classes="InputBorder">
+                <TextBlock Classes="InputBox" Text="{Binding Value}"/>
+            </Border>
+        </Grid>
+        
+        <!-- Buttons -->
+        <WrapPanel>
+            <Button Classes="NumberStyle" 
+                    Command="{Binding Increase}"
+                    CommandParameter="7"
+                    Content="7">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="8"
+                    Content="8">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="9"
+                    Content="9">
+            </Button>
+            <Button
+                Classes="Operation"
+                Command="{Binding Operation}"
+                CommandParameter="-"
+                Content="-">
+            </Button>
+        </WrapPanel>
+        
+        <WrapPanel>
+            <Button Classes="NumberStyle" 
+                    Command="{Binding Increase}"
+                    CommandParameter="4"
+                    Content="4">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="5"
+                    Content="5">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="6"
+                    Content="6">
+            </Button>
+            <Button
+                Classes="Operation"
+                Command="{Binding Operation}"
+                CommandParameter="-"
+                Content="-">
+            </Button>
+        </WrapPanel>
+        
+        <WrapPanel>
+            <Button Classes="NumberStyle" 
+                    Command="{Binding Increase}"
+                    CommandParameter="1"
+                    Content="1">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="2"
+                    Content="2">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="3"
+                    Content="3">
+            </Button>
+            <Button
+                Classes="Operation"
+                Command="{Binding Operation}"
+                CommandParameter="-"
+                Content="-">
+            </Button>
+        </WrapPanel>
+        
+        <WrapPanel>
+            <Button Classes="NumberStyle" 
+                    Command="{Binding Increase}"
+                    CommandParameter="0"
+                    Content="0"
+                    Width="52">
+            </Button>
+            <Button Classes="NumberStyle"
+                    Command="{Binding Increase}"
+                    CommandParameter="."
+                    Content=".">
+            </Button>
+            <Button Classes="EqualOperation"
+                    Command="{Binding Equal}"
+                    Content="=">
+            </Button>
+            
+        </WrapPanel>
+        </StackPanel>
+        </Border>
+    </StackPanel>
+    
+</Window>
